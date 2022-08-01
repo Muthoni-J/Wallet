@@ -4,7 +4,7 @@ from django.utils import timezone
 
 # Create your models here.
 class Currency(models.Model):
-    country_origin=models.CharField(max_length=25,null=True)    
+    country_origin=models.CharField(max_length=25,null=True)  
     currency_rate=models.IntegerField()
     
 class Customer(models.Model):
@@ -25,15 +25,15 @@ class Wallet(models.Model):
         balance = models.IntegerField()
         date = models.DateTimeField(default=timezone.now)
         is_active = models.BooleanField(default=False)
-        currency = models.ForeignKey('Currency',on_delete=models.CASCADE,related_name='Wallet_currency')
+        currency = models.ForeignKey(Currency,on_delete=models.CASCADE,related_name='Wallet_currency')
         profile = models.ImageField(upload_to='profile/',null=True)
-        customer = models.ForeignKey('Customer',on_delete=models.CASCADE,related_name='Wallet_customer')
+        customer = models.ForeignKey(Customer,on_delete=models.CASCADE,related_name='Wallet_customer')
         pin = models.SmallIntegerField()
         type =models.CharField(max_length=15,null=True)
         
         
 class Account(models.Model):
-        wallet = models.ForeignKey('Wallet',on_delete=models.CASCADE,related_name='Account_wallet')
+        wallet = models.ForeignKey(Wallet,on_delete=models.CASCADE,related_name='Account_wallet')
         account_type = models.CharField(max_length=15,null=True)
         balance = models.IntegerField()
         name = models.CharField(max_length=50,null=True)

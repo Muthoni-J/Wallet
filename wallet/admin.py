@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Customer,Wallet,Account,Transaction,Card,Thirdparty,Notification,Receipt,Loan,Reward
+from .models import Customer,Wallet,Account,Transaction,Card,Thirdparty,Notification,Receipt,Loan,Reward,Currency
 
 # Register your models here.
 class CustomerAdmin(admin.ModelAdmin):
@@ -7,6 +7,7 @@ class CustomerAdmin(admin.ModelAdmin):
     search_fields = ("first_name","last_name")
     
 admin.site.register(Customer,CustomerAdmin)
+admin.site.register(Currency)
 admin.site.register(Wallet)
 admin.site.register(Account)
 admin.site.register(Transaction)
