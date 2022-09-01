@@ -44,7 +44,6 @@ class Transaction (models.Model):
         transaction_type = models.CharField(max_length=15,null=True)
         transaction_charge = models.CharField(max_length=5,null=True)
         transaction_cost = models.PositiveIntegerField()
-        third_party = models.ForeignKey('Thirdparty',on_delete=models.CASCADE,related_name='Transaction_thirdparty')
         status = models.CharField(max_length=15,null=True)
         account_origin =  models.ForeignKey('Account',on_delete=models.CASCADE,related_name='Transaction_account_origin')
         destination = models.ForeignKey('Account',on_delete=models.CASCADE,related_name='Transaction_destination')
