@@ -1,14 +1,31 @@
+from crypt import methods
 from django.shortcuts import render
 
-from wallet.models import Wallet
+from wallet.models import Customer, Wallet
 from .forms import CustomerRegistrationForm ,CurrencyRegistrationForm,WalletRegistrationForm,AccountRegistrationForm,TransactionRegistrationForm,CardRegistrationForm,ThirdpartyRegistrationForm,NotificationRegistrationForm,ReceiptRegistrationForm,LoanRegistrationForm,RewardRegistrationForm
 
-
+# reusable for post(save data),get,delete,patch
+# Create your views here.
 def register_customers(request):
     form = CustomerRegistrationForm()
     return render(request,"wallet/register_customers.html",
                   {"form":form})
-    
+
+def register_customer(request):
+    if request.method == "POST":
+        form = CustomerRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = CustomerRegistrationForm()
+    return render(request, "wallet/register_customer.html",{"form": form}) 
+
+def list_customers(request):
+    customers= Customer.objects.all()
+    return render(request, "wallet/list_customers.html",{"customers":customers})
+
+
+
 def register_currency(request):
     form = CurrencyRegistrationForm()
     return render(request,"wallet/register_wallet.html",
@@ -18,7 +35,8 @@ def register_wallet(request):
     form = WalletRegistrationForm()
     return render(request,"wallet/register_wallet.html",
                   {"form":form})
-    
+
+
 def register_account(request):
     form = AccountRegistrationForm()
     return render(request,"wallet/register_account.html",
@@ -59,4 +77,3 @@ def register_reward(request):
     form = RewardRegistrationForm()
     return render(request,"wallet/register_reward.html",
                   {"form":form})
-# Create your views here.
