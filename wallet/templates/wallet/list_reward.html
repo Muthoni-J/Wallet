@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,11 +24,13 @@
     </style>
     <table>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
+            <th>wallet</th>
+            <th>name</th>
+            <th>points</th>
+            <th>date</th>
+            <th>transaction</th> 
         </tr>
-        {% for customer in customers%}
+        {% for wallet in wallet%}
         <tr>
             <td>{{customer.first_name}}</td>
                 <td>{{customer.last_name}}</td>

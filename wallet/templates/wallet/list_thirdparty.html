@@ -24,11 +24,14 @@
     </style>
     <table>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
+            <th>email</th>
+            <th>phone_number</th>
+            <th>transaction_cost </th>
+            <th>currency</th>
+            <th>account</th>
+            <th>is_active</th>
         </tr>
-        {% for customer in customers%}
+        {% for wallet in wallet%}
         <tr>
             <td>{{customer.first_name}}</td>
                 <td>{{customer.last_name}}</td>

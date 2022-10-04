@@ -24,11 +24,13 @@
     </style>
     <table>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
+            <th>date_issued  </th>
+            <th>CVV_security_code</th>
+            <th>signature</th>
+            <th>card_status</th>
+            <th>account</th> 
         </tr>
-        {% for customer in customers%}
+        {% for wallet in wallet%}
         <tr>
             <td>{{customer.first_name}}</td>
                 <td>{{customer.last_name}}</td>
