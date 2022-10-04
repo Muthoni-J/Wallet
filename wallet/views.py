@@ -4,7 +4,7 @@ from profile import Profile
 from webbrowser import get
 from django.shortcuts import render,redirect
 
-from wallet.models import Currency, Customer
+from wallet.models import Card, Currency, Customer, Loan, Notification, Receipt, Reward, Thirdparty, Transaction, Wallet
 from .forms import CustomerRegistrationForm ,CurrencyRegistrationForm,WalletRegistrationForm,AccountRegistrationForm,TransactionRegistrationForm,CardRegistrationForm,ThirdpartyRegistrationForm,NotificationRegistrationForm,ReceiptRegistrationForm,LoanRegistrationForm,RewardRegistrationForm
 
 # reusable for post(save data),get,delete,patch
@@ -65,28 +65,10 @@ def register_currency(request):
 def list_currency(request):
     currency= Currency.objects.all()
     return render(request, "wallet/list_currency.html",{"currency":currency})  
-    
-    
 
-# def register_customers(request):
-#     customers= Customer.objects.all()
-#     return render(request, "wallet/register_customers.html",{"customers":customers})
-
-
-
-# def register_wallet(request):
-#     form = WalletRegistrationForm()
-#     return render(request,"wallet/register_wallet.html",
-#                   {"form":form})
-
-
-
-
-
-# def list_customers(request):
-#     customers= Customer.objects.all()
-#     return render(request, "wallet/list_customers.html",{"customers":customers})
-
+def Currency_profile(request,id):
+    currency = Currency.objects.get(id=id)
+    return render (request,"wallet/currency_profile.html",{"currency":currency})
 
 def register_wallet(request):
     if request.method == "POST":
@@ -116,25 +98,12 @@ def register_account(request):
 
 def list_account(request):
     currency= Currency.objects.all()
-    return render(request, "account/list_account.html",{"currency":currency})  
+    return render(request, "account/list_account.html",{"currency":currency}) 
 
-# def list_customers(request):
-#     customers= Customer.objects.all()
-#     return render(request, "wallet/list_customers.html",{"customers":customers})
+def Wallet_profile(request,id):
+    Wallet = Wallet.objects.get(id=id)
+    return render (request,"wallet/customer_profile.html",{"wallet":Wallet}) 
 
-# def edit_customer(request,id):
-#     customer= Customer.objects.get(id=id)
-#     if request.method == "Post":
-#          form=CardRegistrationForm(request.POST,intance=customer)
-#          if form.is_valid():
-#             form.save()
-#          return redirect("customer_profile",id=customer.id)
-#     else:
-#          form=CardRegistrationForm()
-#     return render(request,"wallet/edit_customer.html",
-#                   {'form':form}) 
-    
-    
 
 def register_transaction(request):
     form = TransactionRegistrationForm()
@@ -154,26 +123,9 @@ def list_transaction(request):
     currency= Currency.objects.all()
     return render(request, "wallet/list_transaction.html",{"currency":currency})  
 
-    
-    
-    
-    
-
-# def list_customers(request):
-#     customers= Customer.objects.all()
-#     return render(request, "wallet/list_customers.html",{"customers":customers})
-
-# def edit_customer(request,id):
-#     customer= Customer.objects.get(id=id)
-#     if request.method == "Post":
-#          form=CardRegistrationForm(request.POST,intance=customer)
-#          if form.is_valid():
-#             form.save()
-#          return redirect("customer_profile",id=customer.id)
-#     else:
-#          form=CardRegistrationForm()
-#     return render(request,"wallet/edit_customer.html",
-#                   {'form':form}) 
+def Transaction_profile(request,id):
+    transaction = Transaction.objects.get(id=id)
+    return render (request,"wallet/customer_profile.html",{"transaction":transaction})  
 
 def register_card(request):
     form = CardRegistrationForm()
@@ -189,32 +141,12 @@ def register_card(request):
         form = CardRegistrationForm()
     return render(request, "wallet/register_card.html",{"form": form}) 
 
-def list_cardt(request):
+def list_card(request):
     currency= Currency.objects.all()
-    return render(request, "wallet/list_card.html",{"currency":currency})  
-
-    
-    
-
-# def list_customers(request):
-#     customers= Customer.objects.all()
-#     return render(request, "wallet/list_customers.html",{"customers":customers})
-
-# def edit_customer(request,id):
-#     customer= Customer.objects.get(id=id)
-#     if request.method == "Post":
-#          form=CardRegistrationForm(request.POST,intance=customer)
-#          if form.is_valid():
-#             form.save()
-#          return redirect("customer_profile",id=customer.id)
-#     else:
-#          form=CardRegistrationForm()
-#     return render(request,"wallet/edit_customer.html",
-#                   {'form':form}) 
-    
-    
-    
-    
+    return render(request, "wallet/list_card.html",{"currency":currency}) 
+def Card_profile(request,id):
+    card = Card.objects.get(id=id)
+    return render (request,"wallet/customer_profile.html",{"card":card}) 
 
 
 def register_thirdparty(request):
@@ -235,28 +167,11 @@ def list_thirdparty(request):
     currency= Currency.objects.all()
     return render(request, "wallet/list_thirdparty.html",{"currency":currency})  
 
-    
-    
+def Thirdparty_profile(request,id):
+    thirdparty = Thirdparty.objects.get(id=id)
+    return render (request,"wallet/customer_profile.html",{"thirdparty":thirdparty})  
 
-# def list_customers(request):
-#     customers= Customer.objects.all()
-#     return render(request, "wallet/list_customers.html",{"customers":customers})
-
-# def edit_customer(request,id):
-#     customer= Customer.objects.get(id=id)
-#     if request.method == "Post":
-#          form=CardRegistrationForm(request.POST,intance=customer)
-#          if form.is_valid():
-#             form.save()
-#          return redirect("customer_profile",id=customer.id)
-#     else:
-#          form=CardRegistrationForm()
-#     return render(request,"wallet/edit_customer.html",
-#                   {'form':form}) 
-    
-    
-    
-    
+        
 def register_notification(request):
     form = NotificationRegistrationForm()
     return render(request,"wallet/register_notification.html",
@@ -275,26 +190,9 @@ def list_notification(request):
     currency= Currency.objects.all()
     return render(request, "wallet/list_notification.html",{"currency":currency})  
     
-    
-
-# def list_customers(request):
-#     customers= Customer.objects.all()
-#     return render(request, "wallet/list_customers.html",{"customers":customers})
-
-# def edit_customer(request,id):
-#     customer= Customer.objects.get(id=id)
-#     if request.method == "Post":
-#          form=CardRegistrationForm(request.POST,intance=customer)
-#          if form.is_valid():
-#             form.save()
-#          return redirect("customer_profile",id=customer.id)
-#     else:
-#          form=CardRegistrationForm()
-#     return render(request,"wallet/edit_customer.html",
-#                   {'form':form}) 
-    
-    
-    
+def Notification_profile(request,id):
+    notification = Notification.objects.get(id=id)
+    return render (request,"wallet/customer_profile.html",{"notification":notification})   
     
 def register_receipt(request):
     form = ReceiptRegistrationForm()
@@ -313,27 +211,11 @@ def list_receipt(request):
     currency= Currency.objects.all()
     return render(request, "wallet/list_receipt.html",{"currency":currency})
     
-    
+def Receipt_profile(request,id):
+    receipt = Receipt.objects.get(id=id)
+    return render (request,"wallet/customer_profile.html",{"receipt":receipt}) 
 
-# def list_customers(request):
-#     customers= Customer.objects.all()
-#     return render(request, "wallet/list_customers.html",{"customers":customers})
-
-# def edit_customer(request,id):
-#     customer= Customer.objects.get(id=id)
-#     if request.method == "Post":
-#          form=CardRegistrationForm(request.POST,intance=customer)
-#          if form.is_valid():
-#             form.save()
-#          return redirect("customer_profile",id=customer.id)
-#     else:
-#          form=CardRegistrationForm()
-#     return render(request,"wallet/edit_customer.html",
-#                   {'form':form}) 
-    
-    
-    
-    
+  
     
 def register_loan(request):
     form = LoanRegistrationForm()
@@ -353,27 +235,10 @@ def list_loan(request):
     currency= Currency.objects.all()
     return render(request, "wallet/list_loan.html",{"currency":currency})   
     
-    
-
-# def list_customers(request):
-#     customers= Customer.objects.all()
-#     return render(request, "wallet/list_customers.html",{"customers":customers})
-
-# def edit_customer(request,id):
-#     customer= Customer.objects.get(id=id)
-#     if request.method == "Post":
-#          form=CardRegistrationForm(request.POST,intance=customer)
-#          if form.is_valid():
-#             form.save()
-#          return redirect("customer_profile",id=customer.id)
-#     else:
-#          form=CardRegistrationForm()
-#     return render(request,"wallet/edit_customer.html",
-#                   {'form':form}) 
-    
-    
-    
-    
+def Loan_profile(request,id):
+    loan = Loan.objects.get(id=id)
+    return render (request,"wallet/customer_profile.html",{"loan":loan})   
+  
     
 def register_reward(request):
     form = RewardRegistrationForm()
@@ -392,22 +257,9 @@ def list_reward(request):
     currency= Currency.objects.all()
     return render(request, "wallet/list_reward.html",{"currency":currency})   
     
-    
+def Reward_profile(request,id):
+    reward = Reward.objects.get(id=id)
+    return render (request,"wallet/customer_profile.html",{"reward":reward})   
 
-# def list_customers(request):
-#     customers= Customer.objects.all()
-#     return render(request, "wallet/list_customers.html",{"customers":customers})
-
-# def edit_customer(request,id):
-#     customer= Customer.objects.get(id=id)
-#     if request.method == "Post":
-#          form=CardRegistrationForm(request.POST,intance=customer)
-#          if form.is_valid():
-#             form.save()
-#          return redirect("customer_profile",id=customer.id)
-#     else:
-#          form=CardRegistrationForm()
-#     return render(request,"wallet/edit_customer.html",
-#                   {'form':form}) 
 
  

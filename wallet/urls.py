@@ -35,5 +35,17 @@ urlpatterns = [
         
         
         path("customer/<int:id>/",Customer_profile,name ='customer-profile'),
-        path("customer/edit/<int:id>/",edit_customer,name = 'edit-customer')
+        path("wallet/<int:id>/",Customer_profile,name ='wallet-profile'),
+        path("account/<int:id>/",Customer_profile,name ='account-profile'),
+        path("transaction/<int:id>/",Customer_profile,name ='transaction-profile'),
+        path("card/<int:id>/",Customer_profile,name ='card-profile'),
+        path("thirdparty/<int:id>/",Customer_profile,name ='thirdparty-profile'),
+        path("notification/<int:id>/",Customer_profile,name ='notification-profile'),
+        path("receipt/<int:id>/",Customer_profile,name ='receipt-profile'),
+        path("loan/<int:id>/",Customer_profile,name ='loan-profile'),
+        path("reward/<int:id>/",Customer_profile,name ='reward-profile'),
+        
+        
+        path("customer/edit/<int:id>/",edit_customer,name = 'edit-customer'),
+
     ]
