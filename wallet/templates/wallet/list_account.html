@@ -26,15 +26,15 @@
         <tr>
             <th>wallet</th>
             <th>account_type</th>
-            <th>is_active</th>
             <th>balance</th>
             <th>name</th>
         </tr>
-        {% for wallet in wallet%}
+        {% for account in accounts%}
         <tr>
-            <td>{{customer.first_name}}</td>
-                <td>{{customer.last_name}}</td>
-                    <td>{{customer.email}}</td>
+                   <td>{{account.wallet}}</td>
+                   <td>{{account.account_type}}</td>
+                   <td>{{account.balance}}</td>
+                   <td>{{account.name}}</td>      
         </tr>
     {% endfor %}
     </table>

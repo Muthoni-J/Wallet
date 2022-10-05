@@ -33,11 +33,17 @@
             <th>pin</th>
             <th>type</th>
         </tr>
-        {% for wallet in wallet%}
+        {% for wallet in wallets%}
         <tr>
-            <td>{{customer.first_name}}</td>
-                <td>{{customer.last_name}}</td>
-                    <td>{{customer.email}}</td>
+                   <td>{{wallet.balance}}</td>
+                   <td>{{wallet.date}}</td>
+                   <td>{{wallet.is_active}}</td>
+                   <td>{{wallet.currency}}</td>
+                   <td>{{wallet.profile}}</td>
+                   <td>{{wallet.customer}}</td>
+                   <td>{{wallet.pin}}</td>
+                   <td>{{wallet.type}}</td>
+                    
         </tr>
     {% endfor %}
     </table>

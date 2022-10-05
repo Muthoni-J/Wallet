@@ -32,11 +32,16 @@
             <th>destination</th>
             <th>receipt</th>
         </tr>
-        {% for wallet in wallet%}
+        {% for transaction in transactions%}
         <tr>
-            <td>{{customer.first_name}}</td>
-                <td>{{customer.last_name}}</td>
-                    <td>{{customer.email}}</td>
+            <td>{{transaction.amount}}</td>
+                <td>{{transaction.transaction_type}}</td>
+                    <td>{{transaction.transaction_charge}}</td>
+                    <td>{{transaction.transaction_cost}}</td>
+                    <td>{{transaction.account_origin}}</td>
+                    <td>{{transaction.account_charge}}</td>
+                    <td>{{transaction.detination}}</td>
+                    <td>{{transaction.receipt}}</td>
         </tr>
     {% endfor %}
     </table>

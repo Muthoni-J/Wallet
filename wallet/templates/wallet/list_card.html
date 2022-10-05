@@ -30,11 +30,13 @@
             <th>card_status</th>
             <th>account</th> 
         </tr>
-        {% for wallet in wallet%}
+        {% for card in cards%}
         <tr>
-            <td>{{customer.first_name}}</td>
-                <td>{{customer.last_name}}</td>
-                    <td>{{customer.email}}</td>
+            <td>{{card.date_issued}}</td>
+                <td>{{card.CVV_security_code}}</td>
+                    <td>{{card.signature}}</td>
+                    <td>{{card_status}}</td>
+                    <td>{{card.account}}</td>
         </tr>
     {% endfor %}
     </table>
