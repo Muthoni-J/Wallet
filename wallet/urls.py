@@ -3,7 +3,7 @@ from pathlib import Path
 from unicodedata import name
 from django.urls import path
 
-from .views import  account_profile, card_profile, customer_profile, edit_account, edit_customer, edit_wallet, list_account, list_card, list_currency, list_customers, list_loan, list_notification, list_receipt, list_reward, list_thirdparty, list_transaction, list_wallet, loan_profile, notification_profile, receipt_profile, register_account, register_card,register_currency, register_customer, register_loan, register_notification, register_receipt, register_reward, register_thirdparty, register_wallet, reward_profile, thirdparty_profile, transaction_profile, wallet_profile
+from .views import  account_profile, card_profile, customer_profile, edit_account, edit_customer, edit_transaction, edit_wallet, list_account, list_card, list_currency, list_customers, list_loan, list_notification, list_receipt, list_reward, list_thirdparty, list_transaction, list_wallet, loan_profile, notification_profile, receipt_profile, register_account, register_card,register_currency, register_customer, register_loan, register_notification, register_receipt, register_reward, register_thirdparty, register_wallet, reward_profile, thirdparty_profile, transaction_profile, wallet_profile
 
 urlpatterns = [
         path("register/",register_customer,name="registration"),

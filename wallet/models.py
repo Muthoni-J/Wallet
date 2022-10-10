@@ -40,7 +40,7 @@ class Account(models.Model):
 class Transaction (models.Model):
         amount = models.IntegerField()
         transaction_type = models.CharField(max_length=15,null=True)
-        transaction_charge = models.CharField(max_length=5,null=True)
+        transaction_type= models.CharField(max_length=5,null=True)
         transaction_cost = models.PositiveIntegerField()
         status = models.CharField(max_length=15,null=True)
         account_origin =  models.ForeignKey('Account',on_delete=models.CASCADE,related_name='Transaction_account_origin')

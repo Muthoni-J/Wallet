@@ -25,7 +25,7 @@ class AccountAdmin(admin.ModelAdmin):
 admin.site.register(Account,AccountAdmin)
 
 class TransactionAdmin(admin.ModelAdmin):
-    list_display = ("amount","transaction_type","transaction_charge","transaction_cost","status","receipt","account_origin","destination","receipt")
+    list_display = ("amount","transaction_type","transaction_cost","status","receipt","account_origin","destination","receipt")
     search_fields = ("amount","transaction_type",)
 admin.site.register(Transaction,TransactionAdmin)
 
